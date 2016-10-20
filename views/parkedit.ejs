@@ -1,0 +1,276 @@
+<% include common/header %>
+
+<!-- <script type="text/javascript" src="/js/bootstrap-tagsinput.min.js"></script> -->
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+			<h1>Edit Park</h1>
+        </div>
+
+        <div class="main-login new-center">
+        	
+        	<div id="form-error" class="alert alert-danger">
+        		
+        	</div>
+
+        	<form class="form-horizontal" id="nadd">
+        		
+        		<div class="form-group">
+                    <label for="title" class="cols-sm-2 control-label">Park Title</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" class="form-control" name="title" id="title"  placeholder="Enter park Title" value="<%-data[0]['title']%>" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="desc" class="cols-sm-2 control-label">Description</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" class="form-control" name="desc" id="desc"  placeholder="Enter park Description" value="<%-data[0]['description']%>"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="street" class="cols-sm-2 control-label">Street Address</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" class="form-control" name="street" id="street"  placeholder="Enter park street address" value="<%-data[0]['streetAddress']%>"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="city" class="cols-sm-2 control-label">City</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" class="form-control" name="city" id="city" value="<%-data[0]['city']%>"  placeholder="Enter city"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country" class="cols-sm-2 control-label">Country</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" value="<%-data[0]['country']%>" class="form-control" name="country" id="country"  placeholder="Enter country"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="zip" class="cols-sm-2 control-label">Zip Code</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" value="<%-data[0]['zipCode']%>" class="form-control" name="zip" id="zip"  placeholder="Enter zip"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="cols-sm-2 control-label">Amenities</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <!-- <span class="input-group-addon"></span> -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="amenities" value="playground">Playground</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="amenities" value="baseball">Baseball</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="amenities" value="basketball">Basketball</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="amenities" value="running">Running</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="amenities" value="water">Water</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="selneighbor" class="cols-sm-2 control-label">Select Neighborhood</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <!-- <input required type="text" class="form-control" name="title" id="title"  placeholder="Enter a title"/> -->
+                            <select id="selneighbor" class="form-control">
+                            	
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="latitude" class="cols-sm-2 control-label">Park Latitude (use - if South)</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" value="<%-data[0]['location']['coordinates'][1]%>" class="form-control" name="latitude" id="latitude"  placeholder="Enter latitude"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="longitude" class="cols-sm-2 control-label">Park Longitude (use - if West)</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input required type="text" value="<%-data[0]['location']['coordinates'][0]%>" class="form-control" name="longitude" id="longitude"  placeholder="Enter longitude"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="longitude" class="cols-sm-2 control-label">Edit park image</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <a href="#" id="upload_widget_opener">Upload multiple images</a>
+                        </div>
+                        <div class="thumbnail-show">
+                            <img src="<%-data[0].imgUrl%>">
+                        </div>
+                    </div>
+                </div>
+
+
+                <% if(login){%>
+                	<div class="form-group ">
+	                    <button type="button" class="btn btn-primary btn-lg " id="create-new" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Creating...">Edit this park</button>
+	                </div>
+	            <%}else{%>
+                	<div class="form-group">
+                		Please login: <a href="/login">Login</a>
+                	</div>
+                <%}%>
+
+        	</form>
+
+        </div>
+
+    </div>
+</div>
+<!-- /.row -->
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+
+        var uploadedPic = "<%-data[0]['imgUrl']%>";
+        var parkid = "<%-data[0]['id']%>";
+
+        $('#upload_widget_opener').cloudinary_upload_widget({
+            cloud_name: 'djjybr20i',
+            upload_preset: 'oiofivd9',
+            cropping: 'server',
+            folder: 'user_photos'
+        }, function(err, result){
+            if(err){
+                $("#form-error").show();
+                $("#form-error").text("Image upload error");
+                setTimeout(function(){
+                    $("#form-error").hide();
+                }, 3500);
+                return false;
+            }
+            // console.log(result[0]['url']);
+            uploadedPic = result[0]['url'];
+            $('.thumbnail-show').hide();
+        });
+
+		/*$('.btn').on('click', function() {
+			var $this = $(this);
+			$this.button('loading');
+		});*/
+
+		$.ajax({
+			url: '/api/v1/neighborhoods',
+			type: "GET",
+			success: function(d){
+				if(d['status'] == 'success'){
+					var html = '';
+					for(var item in d['data']){
+						html += '<option value="'+d['data'][item]['id']+'">';
+						html += d['data'][item]['title'];
+						html += '</option>';
+					}
+					$("#selneighbor").html(html);
+                    $("#selneighbor").val("<%-data[0]['nid']%>");
+				}
+			},
+			error: function(err){
+				console.log('error');
+			}
+		})
+
+		// submit form via ajax
+		$("#create-new").on('click', function(e){
+			e.preventDefault();
+			var $this = $(this);
+			$this.button('loading');
+
+			var title = $("#title").val(),
+				desc = $("#desc").val(),
+				street = $("#street").val(),
+				city = $("#city").val(),
+				country = $("#country").val(),
+				zip = $("#zip").val(),
+				amenities = [],
+				nid = $("#selneighbor").val(),
+				latitude = $("#latitude").val(),
+				longitude = $("#longitude").val();
+
+			if(title == "" || desc == "" || street == "" || city == "" || country == "" || zip == "" || nid == "" || latitude == "" || longitude == ""){
+				$("#form-error").show();
+				$("#form-error").text("Please fill all fields");
+				$this.button('reset');
+				return false;
+			}
+
+            $(".checkbox input[name=amenities]").each(function(){
+                if($(this).is(':checked')){
+                    amenities.push($(this).val());
+                }
+            });
+
+			$.ajax({
+				url: '/api/v1/editpark',
+				type: 'POST',
+				data: {title: title, desc: desc, street: street, city: city, country: country, zip: zip, amenities: amenities, nid: nid, latitude: latitude, longitude: longitude, imgurl: uploadedPic, id:parkid},
+				success: function(d){
+					if(d['status'] == "success"){
+						// console.log(d);
+						window.location = '/parks/park/' + parkid;
+
+					}else{
+						$("#form-error").show();
+						$("#form-error").text("Some error occurred. Try again");
+						$this.button('reset');
+					}
+				},
+				error: function(err){
+					console.log('error');
+				}
+			})
+
+		});
+
+
+	})
+
+</script>
+
+<% include common/footer %>

@@ -1,0 +1,36 @@
+<% include common/header %>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+			<div class='btn-toolbar pull-right'>
+				<div class='btn-group'>
+					<%if(login){%>
+						<a href="/parks/park/edit/<%-data[0].id%>" class="btn btn-primary">Edit this Park</a>
+					<%}%>
+				</div>
+			</div>
+			<h1><%- data[0].title %></h1>
+        </div>
+
+        <p>
+        	<i class="fa fa-location-arrow" aria-hidden="true"></i>
+        	<%- data[0].streetAddress %>,
+        	<%- data[0].city %>,
+        	<%- data[0].state %>,
+        	<%- data[0].country %>
+        </p>
+
+        <hr>
+
+        <img class="img-responsive" src="<%-data[0].imgUrl%>" alt="Park Image">
+
+        <hr>
+
+        
+
+    </div>
+</div>
+<!-- /.row -->
+
+<% include common/footer %>

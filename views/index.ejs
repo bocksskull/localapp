@@ -1,0 +1,23 @@
+<% include common/header %>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Welcome to ParksApp
+        </h1>
+        <% if(login){%>
+            <!-- show links to user -->
+        <%}else{%>
+            <div>
+                <p>
+                    You can login as an admin and add more neighborhoods and parks.
+                </p>
+                <p>
+                    Login now <a href="/login">LOGIN</a>
+                </p>
+            </div>
+        <%}%>
+    </div>
+</div>
+<!-- /.row -->
+
+<% include common/footer %>

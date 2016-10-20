@@ -1,0 +1,21 @@
+<!-- this template is used to show list items -->
+<!-- like can be used on community/questions -->
+
+<% data.forEach(function(d) { %>
+
+<div class="tile">
+	<div class="tile-inner">
+		<p class="upper-title text-overflow">
+			<a class="thread-link" data-toggle="modal" data-thread-id="<%- d.post_id %>" href="thread/<%- d.post_id%>" data-href="#thread-modal">
+				<%- d.title %>
+			</a>
+		</p>
+		<p>
+			<span class="bottom-item viewcount"><%- d.views %> views</span>
+			<span class="bottom-item commentcount"><%- d.total_comments%> comments</span>
+			<span class="bottom-item timeago">about 14 hours ago</span>
+		</p>
+	</div>
+</div>
+
+<% }); %>
